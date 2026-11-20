@@ -1,0 +1,17 @@
+import urllib.request
+import json
+import statistics
+stats = statistics
+handle = urllib.request.urlopen("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson")
+data = handle.read()
+eData = json.loads(data)
+eData.keys()
+earthquakelist = eData['features']
+len(earthquakelist)
+print(len(earthquakelist))
+print("the mean is:", stats.mean([sig['properties']['sig'] for sig in earthquakelist]))
+print("the minimum is:", min([sig['properties']['sig'] for sig in earthquakelist]))
+print("the maximum is:", max([sig['properties']['sig'] for sig in earthquakelist]))
+print("the median is:", stats.median([sig['properties']['sig'] for sig in earthquakelist]))
+print("the standard deviation is:", stats.stdev([sig['properties']['sig'] for sig in earthquakelist]))
+print("the mode is:", stats.mode([sig['properties']['sig'] for sig in earthquakelist]))

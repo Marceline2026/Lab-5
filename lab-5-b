@@ -1,0 +1,7 @@
+with open("labs/Regular-Text.txt", "r") as UppercaseText:
+ Text= UppercaseText.read()
+
+Text= Text.upper() 
+
+with open("labs/Uppercase-Text.txt", "w") as UppercaseText:
+ UppercaseText.write(Text)   
